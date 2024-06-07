@@ -1,11 +1,15 @@
+//importing file system and process modules
 const fs = require('fs');
+const process = require('process');
 
 function cat (path) {
-    fs.readFile(path, 'uft8', function(err, data) {
+    fs.readFile(path, 'utf8', function(err, data) {
         if(err) {
-            console.log(err);
+            console.log(`Error trying to read ${path}: ${err}`);
             process.exit(1);
         }
         console.log(data);
     })
 }
+
+cat(process.argv[2]); 
